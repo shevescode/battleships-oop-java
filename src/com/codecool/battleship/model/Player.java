@@ -29,16 +29,24 @@ public class Player {
         return ships.get(i);
     }
 
-    public Spot chooseSpot(Coordinates coordinates) {
-        return playerBoard.getSpotArray()[coordinates.getX()][coordinates.getY()];
+//    public Spot chooseSpot() {
+//        return playerBoard.getSpotArray()[coordinates.getX()][coordinates.getY()];
+//    }
+
+
+
+    public void placeShip(Ship ship, List<Spot> validSpots) {
+        if(validSpots.size() == ship.getSize()){
+            ship.setShipParts(validSpots);
+            playerBoard.setShipsOnBoard(validSpots);
+        }
     }
 
-    public void placeShip(Ship ship, Orientation orientation, Spot spot) {
-
+    public List<Ship> getShips() {
+        return ships;
     }
 
-
-
-
-
+    public Board getPlayerBoard() {
+        return playerBoard;
+    }
 }

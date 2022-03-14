@@ -8,7 +8,12 @@ public class ConsoleView {
     public void printBoard(Board board) {
         for (Spot[] spotsRow: board.getSpotArray()) {
             for (Spot spot: spotsRow) {
-                System.out.print(spot.getSign());
+                if(spot.isEmpty()) {
+                    System.out.print(spot.getSign());
+                } else {
+                    System.out.print("X");
+                }
+
                 System.out.print(" ");
             }
             System.out.println();

@@ -4,10 +4,12 @@ public class Spot {
 
     private boolean empty;
     private char sign;
+    private Coordinates coordinates;
 
-    public Spot() {
+    public Spot(Coordinates coordinates) {
         this.empty = true;
         this.sign = '~';
+        this.coordinates = coordinates;
     }
 
     public boolean isEmpty() {
@@ -22,4 +24,7 @@ public class Spot {
         return sign;
     }
 
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 }
