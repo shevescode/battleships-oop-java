@@ -3,7 +3,7 @@ package com.codecool.battleship.model;
 public class Spot {
 
     private boolean empty;
-    private char sign;
+    private final char sign;
     private Coordinates coordinates;
 
     public Spot(Coordinates coordinates) {
@@ -26,5 +26,9 @@ public class Spot {
 
     public Coordinates getCoordinates() {
         return coordinates;
+    }
+
+    public void setShipPart() {
+
     }
 }

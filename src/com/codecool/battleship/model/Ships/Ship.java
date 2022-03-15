@@ -3,19 +3,21 @@ package com.codecool.battleship.model.Ships;
 import com.codecool.battleship.model.Coordinates;
 import com.codecool.battleship.model.Spot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public abstract class Ship {
     private final int size;
-    private final boolean ALIVE = true;
-    private final boolean DEAD = false;
-    private HashMap<Coordinates, Boolean> shipParts;
+    private boolean sunk;
+    private List<ShipPart> shipParts;
 
 //    private Orientation orientation;
 
     public Ship(int size) {
         this.size = size;
+        this.sunk = false;
+        this.shipParts = new ArrayList<>();
     }
 
     public int getSize() {
@@ -23,14 +25,18 @@ public abstract class Ship {
     }
 
     public void setShipParts(List<Spot> spots) {
-        shipParts = new HashMap<>();
         for (Spot spot: spots) {
-            shipParts.put(spot.getCoordinates(), ALIVE);
+            shipParts.add(new ShipPart(spot.getCoordinates()));
         }
-
     }
 
-    //    public void setOrientation(Orientation orientation) {
-//        this.orientation = orientation;
-//    }
+    public void checkShipPartStatus() {
+        if (!shipParts.stream()
+                .anyMatch(part -> (part.getStatus().equals(ShipPartStatus.ALIVE)))) {
+            for (ShipPart part: shipParts) {
+                part.setStatus(ShipPartStatus.SUNK);
+                part.setSign('X');
+            }
+        }
+    }
 }

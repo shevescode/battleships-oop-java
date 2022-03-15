@@ -30,6 +30,7 @@ public class Board {
     public void setShipsOnBoard(List<Spot> spots) {
         for (Spot spot: spots) {
             spot.setEmpty(false);
+            spot.setShipPart();
         }
     }
     public List<Spot> getSpotsForShip(int shipSize, Orientation orientation, Coordinates coordinates) {
