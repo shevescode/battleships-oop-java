@@ -8,13 +8,10 @@ public class ConsoleView {
     public void printBoard(Board board) {
         printBoardSigns();
         printLine();
-        int counter = 1;
+        int counter = 65;
         for (Spot[] spotsRow: board.getSpotArray()) {
-            if (counter == 10) {
-                System.out.print(counter + "| ");
-            } else {
-                System.out.print(" " + counter + "| ");
-            }
+            System.out.print((char) counter + " | ");
+
             for (Spot spot: spotsRow) {
                 if(spot.isEmpty()) {
 //                    System.out.print(spot.getSign());
@@ -24,8 +21,7 @@ public class ConsoleView {
                 }
                 System.out.print(" ");
             }
-                System.out.print("|");
-
+                System.out.print("| " +(char) counter);
             System.out.println();
             counter += 1;
         }
@@ -35,9 +31,8 @@ public class ConsoleView {
 
     private void printBoardSigns() {
         System.out.print("    ");
-        char[] abc = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-        for (int j = 0; j < 10; j++) {
-            System.out.print(abc[j]+" ");
+        for (int j = 1; j <= 10; j++) {
+            System.out.print(j+" ");
         }
         System.out.println();
     }
