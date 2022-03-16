@@ -22,5 +22,7 @@ public class Main {
         player.placeShip(ship, validSpots);
         System.out.println();
         consoleView.printBoard(player.getPlayerBoard());
+
+
     }
 }

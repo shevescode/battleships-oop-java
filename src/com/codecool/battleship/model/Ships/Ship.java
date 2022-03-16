@@ -1,10 +1,8 @@
 package com.codecool.battleship.model.Ships;
 
-import com.codecool.battleship.model.Coordinates;
 import com.codecool.battleship.model.Spot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public abstract class Ship {
@@ -31,11 +29,9 @@ public abstract class Ship {
     }
 
     public void checkShipPartStatus() {
-        if (!shipParts.stream()
-                .anyMatch(part -> (part.getStatus().equals(ShipPartStatus.ALIVE)))) {
+        if (shipParts.stream().noneMatch(part -> (part.getStatus().equals(ShipPartStatus.ALIVE)))) {
             for (ShipPart part: shipParts) {
-                part.setStatus(ShipPartStatus.SUNK);
-                part.setSign('X');
+                part.sunkShipPart();
             }
         }
     }

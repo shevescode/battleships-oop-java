@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    private int size;
-    private Spot[][] spotArray;
+    private final Spot[][] spotArray;
 
     public Board() {
         spotArray = new Spot[10][10];
@@ -67,4 +66,6 @@ public class Board {
         }
         return validSpots;
     }
+
+
 }

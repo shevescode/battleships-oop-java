@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private List<Ship> ships;
-    private Board playerBoard;
+    private final List<Ship> ships;
+    private final Board playerBoard;
     private Board shootingBoard;
 
     public Player() {
@@ -29,14 +29,9 @@ public class Player {
         return ships.get(i);
     }
 
-//    public Spot chooseSpot() {
-//        return playerBoard.getSpotArray()[coordinates.getX()][coordinates.getY()];
-//    }
-
-
 
     public void placeShip(Ship ship, List<Spot> validSpots) {
-        if(validSpots.size() == ship.getSize()){
+        if (validSpots.size() == ship.getSize()) {
             ship.setShipParts(validSpots);
             playerBoard.setShipsOnBoard(validSpots);
         }

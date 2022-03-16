@@ -7,6 +7,7 @@ public class ShipPart {
     private ShipPartStatus status;
     private char sign;
 
+
     public ShipPart(Coordinates coordinates) {
         this.coordinates = coordinates;
         this.status = ShipPartStatus.ALIVE;
@@ -24,6 +25,11 @@ public class ShipPart {
 
     public void setSign(char sign) {
         this.sign = sign;
+    }
+
+    public void sunkShipPart() {
+        this.status = ShipPartStatus.SUNK;
+        this.sign = 'X';
     }
 
     public ShipPartStatus getStatus() {
