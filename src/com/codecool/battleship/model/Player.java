@@ -33,7 +33,7 @@ public class Player {
     public void placeShip(Ship ship, List<Spot> validSpots) {
         if (validSpots.size() == ship.getSize()) {
             ship.setShipParts(validSpots);
-            playerBoard.setShipsOnBoard(validSpots);
+            playerBoard.setBoardSpotEmpty(validSpots);
         }
     }
 

@@ -24,7 +24,9 @@ public abstract class Ship {
 
     public void setShipParts(List<Spot> spots) {
         for (Spot spot: spots) {
-            shipParts.add(new ShipPart(spot.getCoordinates()));
+            ShipPart shipPart = new ShipPart(spot.getCoordinates());
+            shipParts.add(shipPart);
+            spot.setShipPart(shipPart);
         }
     }
 
@@ -33,6 +35,13 @@ public abstract class Ship {
             for (ShipPart part: shipParts) {
                 part.sunkShipPart();
             }
+            this.sunk = true;
         }
     }
+
+    public List<ShipPart> getShipParts() {
+        return shipParts;
+    }
+
+
 }

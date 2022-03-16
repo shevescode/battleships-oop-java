@@ -11,7 +11,7 @@ public class ShipPart {
     public ShipPart(Coordinates coordinates) {
         this.coordinates = coordinates;
         this.status = ShipPartStatus.ALIVE;
-        this.sign = '#';
+        this.sign = '@';
     }
 
     private void onHitShipPart() {
