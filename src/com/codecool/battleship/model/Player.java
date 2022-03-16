@@ -4,15 +4,18 @@ import com.codecool.battleship.model.Ships.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Player {
     private final List<Ship> ships;
     private final Board playerBoard;
     private Board shootingBoard;
+    private final int id;
 
-    public Player() {
+    public Player(int id) {
         ships = new ArrayList<>();
         playerBoard = new Board();
+        this.id = id;
         assignShips();
     }
 
@@ -37,11 +40,26 @@ public class Player {
         }
     }
 
+    public void removeSunkShip() throws NoSuchElementException {
+
+        Ship ship = ships.stream()
+                .filter(Ship::isSunk)
+                .findAny()
+                .get();
+        ships.remove(ship);
+
+    }
+
     public List<Ship> getShips() {
         return ships;
     }
 
     public Board getPlayerBoard() {
         return playerBoard;
+    }
+
+    @Override
+    public String toString() {
+        return "Player " + id;
     }
 }

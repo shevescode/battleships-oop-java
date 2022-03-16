@@ -36,4 +36,8 @@ public class Spot {
     public void setShipPart(ShipPart shipPart) {
         this.shipPart = shipPart;
     }
+
+    public ShipPart getShipPart() {
+        return shipPart;
+    }
 }

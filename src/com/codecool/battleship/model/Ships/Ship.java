@@ -10,7 +10,6 @@ public abstract class Ship {
     private boolean sunk;
     private List<ShipPart> shipParts;
 
-//    private Orientation orientation;
 
     public Ship(int size) {
         this.size = size;
@@ -23,7 +22,7 @@ public abstract class Ship {
     }
 
     public void setShipParts(List<Spot> spots) {
-        for (Spot spot: spots) {
+        for (Spot spot : spots) {
             ShipPart shipPart = new ShipPart(spot.getCoordinates());
             shipParts.add(shipPart);
             spot.setShipPart(shipPart);
@@ -32,10 +31,11 @@ public abstract class Ship {
 
     public void checkShipPartStatus() {
         if (shipParts.stream().noneMatch(part -> (part.getStatus().equals(ShipPartStatus.ALIVE)))) {
-            for (ShipPart part: shipParts) {
+            for (ShipPart part : shipParts) {
                 part.sunkShipPart();
             }
             this.sunk = true;
+
         }
     }
 
@@ -43,5 +43,7 @@ public abstract class Ship {
         return shipParts;
     }
 
-
+    public boolean isSunk() {
+        return sunk;
+    }
 }

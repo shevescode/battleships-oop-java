@@ -27,10 +27,11 @@ public class Board {
     }
 
     public void setBoardSpotEmpty(List<Spot> spots) {
-        for (Spot spot: spots) {
+        for (Spot spot : spots) {
             spot.setEmpty(false);
         }
     }
+
     public List<Spot> getSpotsForShip(int shipSize, Orientation orientation, Coordinates coordinates) {
         List<Spot> validSpots = new ArrayList<>();
         switch (orientation) {
