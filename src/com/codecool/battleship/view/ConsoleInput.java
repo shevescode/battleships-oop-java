@@ -1,4 +1,4 @@
-package com.codecool.battleship.controller;
+package com.codecool.battleship.view;
 
 import com.codecool.battleship.model.Coordinates;
 import com.codecool.battleship.model.Ships.Orientation;
@@ -7,9 +7,11 @@ import java.util.Scanner;
 
 public class ConsoleInput {
     private final Scanner scanner;
+    private final ConsoleView consoleView;
 
     public ConsoleInput() {
         this.scanner = new Scanner(System.in);
+        this.consoleView = new ConsoleView();
     }
 
     public Coordinates getCoordinates() {
@@ -86,5 +88,16 @@ public class ConsoleInput {
 
     public int chooseMenuOption() {
         return scanner.nextInt();
+    }
+
+    public void pressAnyKeyToContinue()
+    {
+        consoleView.printMessage("Press Enter key to continue...");
+        try
+        {
+            System.in.read();
+        }
+        catch(Exception e)
+        {}
     }
 }

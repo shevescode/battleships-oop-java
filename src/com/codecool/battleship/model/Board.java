@@ -67,5 +67,20 @@ public class Board {
         return validSpots;
     }
 
+    public Spot getSpot(Coordinates coordinates) {
+        return spotArray[coordinates.getX()][coordinates.getY()];
+    }
 
+
+    public void markHit(Coordinates coordinates, Board enemyBoard) {
+        spotArray[coordinates.getX()][coordinates.getY()] = enemyBoard.getSpotArray()[coordinates.getX()][coordinates.getY()];
+    }
+
+    public boolean isHit(Coordinates coordinates) {
+        return !spotArray[coordinates.getX()][coordinates.getY()].isEmpty();
+    }
+
+    public void markMiss(Coordinates coordinates) {
+        spotArray[coordinates.getX()][coordinates.getY()].setMissSign();
+    }
 }

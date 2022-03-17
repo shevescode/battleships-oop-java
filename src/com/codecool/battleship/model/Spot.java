@@ -6,13 +6,13 @@ import com.codecool.battleship.model.Ships.ShipPart;
 public class Spot {
 
     private boolean empty;
-    private final char sign;
+    private char sign;
     private Coordinates coordinates;
     private ShipPart shipPart;
 
     public Spot(Coordinates coordinates) {
         this.empty = true;
-        this.sign = '~';
+        this.sign = ' ';
         this.coordinates = coordinates;
         this.shipPart = null;
     }
@@ -27,6 +27,10 @@ public class Spot {
 
     public char getSign() {
         return sign;
+    }
+
+    public void setMissSign() {
+        this.sign = '0';
     }
 
     public Coordinates getCoordinates() {

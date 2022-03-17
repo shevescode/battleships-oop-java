@@ -16,8 +16,7 @@ public class ConsoleView {
 
             for (Spot spot : spotsRow) {
                 if (spot.isEmpty()) {
-//                    System.out.print(spot.getSign());
-                    System.out.print(" ");
+                    System.out.print(spot.getSign());
                 } else {
                     System.out.print(spot.getShipPart().getSign());
                 }
@@ -66,4 +65,10 @@ public class ConsoleView {
     public void askForCoordinates() {
         System.out.println("Choose coordinates! (Example: C5):");
     }
+
+//    public static void clearScreen() {
+//        System.out.print("\033[H\033[2J");
+//        System.out.flush();
+//    }
+
 }

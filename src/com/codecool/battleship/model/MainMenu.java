@@ -1,6 +1,6 @@
 package com.codecool.battleship.model;
 
-import com.codecool.battleship.controller.ConsoleInput;
+import com.codecool.battleship.view.ConsoleInput;
 import com.codecool.battleship.controller.Game;
 import com.codecool.battleship.view.ConsoleView;
 

@@ -15,6 +15,7 @@ public class Player {
     public Player(int id) {
         ships = new ArrayList<>();
         playerBoard = new Board();
+        shootingBoard = new Board();
         this.id = id;
         assignShips();
     }
@@ -40,7 +41,7 @@ public class Player {
         }
     }
 
-    public void removeSunkShip() throws NoSuchElementException {
+    private void removeSunkShip() throws NoSuchElementException {
 
         Ship ship = ships.stream()
                 .filter(Ship::isSunk)
@@ -56,6 +57,19 @@ public class Player {
 
     public Board getPlayerBoard() {
         return playerBoard;
+    }
+
+    public Board getShootingBoard() {
+        return shootingBoard;
+    }
+
+    public void checkPlayerShips() {
+        for (Ship ship: ships) {
+            ship.checkShipPartStatus();
+            if (ship.isSunk()) {
+                removeSunkShip();
+            }
+        }
     }
 
     @Override

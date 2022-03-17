@@ -14,7 +14,7 @@ public class ShipPart {
         this.sign = '@';
     }
 
-    private void onHitShipPart() {
+    public void onHitShipPart() {
         status = ShipPartStatus.HIT;
         sign = '!';
     }
