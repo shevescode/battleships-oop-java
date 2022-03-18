@@ -1,19 +1,15 @@
 package com.codecool.battleship.model;
 
-import com.codecool.battleship.model.Ships.Ship;
 import com.codecool.battleship.model.Ships.ShipPart;
 
 public class Spot {
-
     private boolean empty;
     private char sign;
-    private Coordinates coordinates;
     private ShipPart shipPart;
 
-    public Spot(Coordinates coordinates) {
+    public Spot() {
         this.empty = true;
         this.sign = ' ';
-        this.coordinates = coordinates;
         this.shipPart = null;
     }
 
@@ -31,10 +27,6 @@ public class Spot {
 
     public void setMissSign() {
         this.sign = '0';
-    }
-
-    public Coordinates getCoordinates() {
-        return coordinates;
     }
 
     public void setShipPart(ShipPart shipPart) {

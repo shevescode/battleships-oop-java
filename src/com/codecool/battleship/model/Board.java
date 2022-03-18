@@ -17,15 +17,6 @@ public class Board {
         return spotArray;
     }
 
-    private void initBoard() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                spotArray[i][j] = new Spot(new Coordinates(i, j));
-            }
-        }
-
-    }
-
     public void setBoardSpotEmpty(List<Spot> spots) {
         for (Spot spot : spots) {
             spot.setEmpty(false);
@@ -71,7 +62,6 @@ public class Board {
         return spotArray[coordinates.getX()][coordinates.getY()];
     }
 
-
     public void markHit(Coordinates coordinates, Board enemyBoard) {
         spotArray[coordinates.getX()][coordinates.getY()] = enemyBoard.getSpotArray()[coordinates.getX()][coordinates.getY()];
     }
@@ -82,5 +72,13 @@ public class Board {
 
     public void markMiss(Coordinates coordinates) {
         spotArray[coordinates.getX()][coordinates.getY()].setMissSign();
+    }
+
+    private void initBoard() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                spotArray[i][j] = new Spot();
+            }
+        }
     }
 }

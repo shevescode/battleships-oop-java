@@ -12,8 +12,8 @@ import com.codecool.battleship.view.ConsoleView;
 import java.util.List;
 
 public class Game {
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
     private boolean gameIsRunning;
     private final ConsoleView consoleView;
     private final ConsoleInput consoleInput;
@@ -35,23 +35,25 @@ public class Game {
         while (gameIsRunning) {
             Coordinates coordinates;
             Board enemyBoard = getAnotherPlayer(player).getPlayerBoard();
+            Board playerBoard = player.getPlayerBoard();
+            Board shootingBoard = player.getShootingBoard();
             Player enemyPlayer = getAnotherPlayer(player);
-            consoleView.printBoard(player.getPlayerBoard());
-            consoleView.printBoard(player.getShootingBoard());
-            consoleView.askForCoordinates();
-            //
-            coordinates = consoleInput.getCoordinates();
-            if (enemyBoard.isHit(coordinates)){
-                enemyBoard.getSpot(coordinates).getShipPart().onHitShipPart();
-                enemyPlayer.checkPlayerShips();
-                player.getShootingBoard().markHit(coordinates, enemyBoard);
-            } else {
-                player.getShootingBoard().markMiss(coordinates);
-            }
-            consoleView.printBoard(player.getPlayerBoard());
-            consoleView.printBoard(player.getShootingBoard());
-            consoleInput.pressAnyKeyToContinue();
 
+            consoleView.printMessage(player.toString());
+            consoleView.printBoard(playerBoard);
+            consoleView.printBoard(shootingBoard);
+            consoleView.askForCoordinates();
+            coordinates = consoleInput.getCoordinates();
+            if (enemyBoard.isHit(coordinates)) {
+                enemyBoard.getSpot(coordinates).getShipPart().markAsHit();
+                enemyPlayer.checkPlayerShips();
+                shootingBoard.markHit(coordinates, enemyBoard);
+            } else {
+                shootingBoard.markMiss(coordinates);
+            }
+            consoleView.printBoard(playerBoard);
+            consoleView.printBoard(shootingBoard);
+            consoleInput.pressAnyKeyToContinue();
 
             player = getAnotherPlayer(player);
         }
@@ -65,8 +67,8 @@ public class Game {
         Coordinates coordinates;
         Orientation orientation;
         List<Spot> validSpots;
-        consoleView.printMessage(player.toString());
 
+        consoleView.printMessage(player.toString());
         for (Ship ship : player.getShips()) {
             consoleView.printMessage("Place your " + ship + "! Size: " + ship.getSize());
             consoleView.printBoard(player.getPlayerBoard());

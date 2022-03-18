@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class Ship {
     private final int size;
     private boolean sunk;
-    private List<ShipPart> shipParts;
+    private final List<ShipPart> shipParts;
 
 
     public Ship(int size) {
@@ -23,7 +23,7 @@ public abstract class Ship {
 
     public void setShipParts(List<Spot> spots) {
         for (Spot spot : spots) {
-            ShipPart shipPart = new ShipPart(spot.getCoordinates());
+            ShipPart shipPart = new ShipPart();
             shipParts.add(shipPart);
             spot.setShipPart(shipPart);
         }
@@ -32,15 +32,11 @@ public abstract class Ship {
     public void checkShipPartStatus() {
         if (shipParts.stream().noneMatch(part -> (part.getStatus().equals(ShipPartStatus.ALIVE)))) {
             for (ShipPart part : shipParts) {
-                part.sunkShipPart();
+                part.markAsSunk();
             }
             this.sunk = true;
 
         }
-    }
-
-    public List<ShipPart> getShipParts() {
-        return shipParts;
     }
 
     public boolean isSunk() {

@@ -1,33 +1,21 @@
 package com.codecool.battleship.model.Ships;
 
-import com.codecool.battleship.model.Coordinates;
-
 public class ShipPart {
-    private final Coordinates coordinates;
     private ShipPartStatus status;
     private char sign;
 
 
-    public ShipPart(Coordinates coordinates) {
-        this.coordinates = coordinates;
+    public ShipPart() {
         this.status = ShipPartStatus.ALIVE;
         this.sign = '@';
     }
 
-    public void onHitShipPart() {
+    public void markAsHit() {
         status = ShipPartStatus.HIT;
         sign = '!';
     }
 
-    public void setStatus(ShipPartStatus status) {
-        this.status = status;
-    }
-
-    public void setSign(char sign) {
-        this.sign = sign;
-    }
-
-    public void sunkShipPart() {
+    public void markAsSunk() {
         this.status = ShipPartStatus.SUNK;
         this.sign = 'X';
     }
