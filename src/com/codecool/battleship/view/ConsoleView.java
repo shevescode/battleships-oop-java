@@ -1,6 +1,7 @@
 package com.codecool.battleship.view;
 
 import com.codecool.battleship.model.Board;
+import com.codecool.battleship.model.Player;
 import com.codecool.battleship.model.Spot;
 
 import java.util.List;
@@ -49,10 +50,9 @@ public class ConsoleView {
         System.out.println("Choose coordinates! (Example: C5):");
     }
 
-//    public static void clearScreen() {
-//        System.out.print("\033[H\033[2J");
-//        System.out.flush();
-//    }
+    public void printCongratulations(Player player) {
+        System.out.println(player + " won!");
+    }
 
     private void printBoardSigns() {
         System.out.print("    ");

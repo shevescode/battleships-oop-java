@@ -42,7 +42,6 @@ public class Game {
             consoleView.printMessage(player.toString());
             consoleView.printBoard(playerBoard);
             consoleView.printBoard(shootingBoard);
-            consoleView.askForCoordinates();
             coordinates = consoleInput.getCoordinates();
             if (enemyBoard.isHit(coordinates)) {
                 enemyBoard.getSpot(coordinates).getShipPart().markAsHit();
@@ -51,11 +50,23 @@ public class Game {
             } else {
                 shootingBoard.markMiss(coordinates);
             }
-            consoleView.printBoard(playerBoard);
-            consoleView.printBoard(shootingBoard);
-            consoleInput.pressAnyKeyToContinue();
 
-            player = getAnotherPlayer(player);
+            doesEnemyLose(enemyPlayer);
+            if(gameIsRunning){
+                consoleView.printBoard(playerBoard);
+                consoleView.printBoard(shootingBoard);
+                consoleInput.pressAnyKeyToContinue();
+                player = getAnotherPlayer(player);
+            } else {
+                consoleView.printBoard(shootingBoard);
+                consoleView.printCongratulations(player);
+            }
+        }
+    }
+
+    private void doesEnemyLose(Player enemyPlayer) {
+        if(enemyPlayer.getShips().isEmpty()){
+            gameIsRunning = false;
         }
     }
 
@@ -72,7 +83,6 @@ public class Game {
         for (Ship ship : player.getShips()) {
             consoleView.printMessage("Place your " + ship + "! Size: " + ship.getSize());
             consoleView.printBoard(player.getPlayerBoard());
-            consoleView.askForCoordinates();
             coordinates = consoleInput.getCoordinates();
             consoleView.askForOrientation();
             orientation = consoleInput.getOrientation();
