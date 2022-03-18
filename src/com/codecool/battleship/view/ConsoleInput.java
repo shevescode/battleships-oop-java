@@ -22,7 +22,6 @@ public class ConsoleInput {
             int row = Character.getNumericValue(chosenCoordinates.charAt(0)) - 10;
             int colFirstDigit = Character.getNumericValue(chosenCoordinates.charAt(1));
 
-
             switch (chosenCoordinates.length()) {
                 case 2 -> {
                     return new Coordinates(row, colFirstDigit - 1);
@@ -31,40 +30,11 @@ public class ConsoleInput {
                     int colSecondDigit = Character.getNumericValue(chosenCoordinates.charAt(2));
                     String addedDigits = (colFirstDigit) + "" + (colSecondDigit);
                     int col = Integer.parseInt(addedDigits);
-                    System.out.println("row = " + row + " " + "col = " + col);
                     return new Coordinates(row, col - 1);
                 }
             }
         }
         return new Coordinates(0, 0);
-    }
-
-    private boolean validUserInput(String chosenCoordinates) {
-        char isCharValid = chosenCoordinates.charAt(0);
-        char isFirstDigitValid = chosenCoordinates.charAt(1);
-
-        switch (chosenCoordinates.length()) {
-            case 2 -> {
-                if (Character.toString(isCharValid).matches("^[a-jA-J]*$")) {
-                    return Character.toString(isFirstDigitValid).matches("^[1-9]*$");
-                }
-                return false;
-            }
-            case 3 -> {
-                char isSecondDigitValid = chosenCoordinates.charAt(2);
-                String addedDigits = String.valueOf(isFirstDigitValid) + String.valueOf(isSecondDigitValid);
-                int row = Integer.parseInt(addedDigits);
-                if (Character.toString(isCharValid).matches("^[a-jA-J]*$")) {
-                    return row > 0 && row <= 10;
-
-                }
-                return false;
-            }
-            default -> {
-                System.out.println("Something wrong, try again...");
-                return false;
-            }
-        }
     }
 
     public Orientation getOrientation() {
@@ -90,14 +60,39 @@ public class ConsoleInput {
         return scanner.nextInt();
     }
 
-    public void pressAnyKeyToContinue()
-    {
+    public void pressAnyKeyToContinue() {
         consoleView.printMessage("Press Enter key to continue...");
-        try
-        {
+        try {
             System.in.read();
+        } catch (Exception ignored) {
         }
-        catch(Exception e)
-        {}
+    }
+
+    private boolean validUserInput(String chosenCoordinates) {
+        char isCharValid = chosenCoordinates.charAt(0);
+        char isFirstDigitValid = chosenCoordinates.charAt(1);
+
+        switch (chosenCoordinates.length()) {
+            case 2 -> {
+                if (Character.toString(isCharValid).matches("^[a-jA-J]*$")) {
+                    return Character.toString(isFirstDigitValid).matches("^[1-9]*$");
+                }
+                return false;
+            }
+            case 3 -> {
+                char isSecondDigitValid = chosenCoordinates.charAt(2);
+                String addedDigits = (isFirstDigitValid) + "" + (isSecondDigitValid);
+                int row = Integer.parseInt(addedDigits);
+                if (Character.toString(isCharValid).matches("^[a-jA-J]*$")) {
+                    return row > 0 && row <= 10;
+
+                }
+                return false;
+            }
+            default -> {
+                System.out.println("Something wrong, try again...");
+                return false;
+            }
+        }
     }
 }

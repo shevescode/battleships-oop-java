@@ -30,23 +30,6 @@ public class ConsoleView {
         printBoardSigns();
     }
 
-    private void printBoardSigns() {
-        System.out.print("    ");
-        for (int j = 1; j <= 10; j++) {
-            System.out.print(j + " ");
-        }
-        System.out.println();
-    }
-
-    private void printLine() {
-        System.out.print("  +");
-        for (int i = 0; i < 10; i++) {
-            System.out.print("--");
-        }
-        System.out.print("-+");
-        System.out.println();
-    }
-
     public void printMessage(String message) {
         System.out.println(message);
     }
@@ -70,5 +53,22 @@ public class ConsoleView {
 //        System.out.print("\033[H\033[2J");
 //        System.out.flush();
 //    }
+
+    private void printBoardSigns() {
+        System.out.print("    ");
+        for (int j = 1; j <= 10; j++) {
+            System.out.print(j + " ");
+        }
+        System.out.println();
+    }
+
+    private void printLine() {
+        System.out.print("  +");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("--");
+        }
+        System.out.print("-+");
+        System.out.println();
+    }
 
 }
