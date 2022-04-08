@@ -57,7 +57,7 @@ public class Player {
                     .filter(Ship::isSunk)
                     .findAny()
                     .orElse(null);
-            ships.remove(ship);
+            ships.remove(ship); // TODO if(ship != null) {ships.remove(ship);}
         } catch (NoSuchElementException ignored) {}
     }
 

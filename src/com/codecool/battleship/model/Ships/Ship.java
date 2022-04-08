@@ -35,7 +35,6 @@ public abstract class Ship {
                 part.markAsSunk();
             }
             this.sunk = true;
-
         }
     }
 
