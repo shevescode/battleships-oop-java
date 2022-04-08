@@ -14,8 +14,11 @@ Each player receives a game board and five ships of varying lengths. Each ship h
 
 - Destroyer, which has two parts
 
-It's a console game and it has two phases: placing ship and shooting phase. TODO: add JavaFx.
+It's a console game and it has two phases: placing ship and shooting phase.
 
 Example gameplay:
 
 ![](battleships.gif)
+
+ TODO: 
+ - add JavaFx.
