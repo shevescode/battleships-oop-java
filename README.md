@@ -15,4 +15,5 @@ Each player receives a game board and five ships of varying lengths. Each ship h
 - Destroyer, which has two parts
 
 It's a console game in next updates we will add JavaFx to our game.
+
 ![](battleships.gif)
